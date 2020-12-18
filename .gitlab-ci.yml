@@ -1,0 +1,37 @@
+stages:
+  - deploy
+  - androidbuild
+  - androidtest
+
+deploy:
+  stage: deploy
+  script:
+    - cd /usr/local/bin/
+    - ./cicd-service.sh start
+
+android-build:
+  image: javiersantos/android-ci:latest
+  stage: androidbuild
+  before_script:
+    - export GRADLE_USER_HOME='pwd'/.gradle
+    - chmod +x ./Frontend/Bunker/gradlew
+  tags:
+    - FRONTEND
+  script:
+    - cd Frontend/Bunker/
+    - ./gradlew assemble
+  artifacts:
+      paths:
+        - Frontend/Bunker/app/build/outputs/
+
+android-test:
+  image: javiersantos/android-ci:latest
+  stage: androidtest
+  before_script:
+    - export GRADLE_USER_HOME='pwd'/.gradle
+    - chmod +x ./Frontend/Bunker/gradlew
+  tags:
+    - FRONTEND
+  script:
+    - cd Frontend/Bunker/
+    - ./gradlew test

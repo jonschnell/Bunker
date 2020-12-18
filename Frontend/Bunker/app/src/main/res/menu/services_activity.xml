@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Bunker="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_friends"
+        android:icon="@drawable/ic_group_24px"
+        android:title="@string/friends"
+        Bunker:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_chat"
+        android:icon="@drawable/ic_baseline_chat_24"
+        android:title="Chat"
+        Bunker:showAsAction="ifRoom" />
+
+    <!-- Settings, should always be in the overflow -->
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_settings_24px"
+        android:title="@string/settings"
+        Bunker:showAsAction="ifRoom" />
+
+
+</menu>
